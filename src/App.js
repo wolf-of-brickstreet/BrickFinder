@@ -1,11 +1,11 @@
 import './App.css';
-import TestComponent from './Components/TestComponent.js'
+import MainComponent from './Components/MainComponent.js'
 
 function App() {
   return (
     <div className="App">
       Hello React!
-      <TestComponent name="wolmic"/>
+      <MainComponent/>
     </div>
   );
 }

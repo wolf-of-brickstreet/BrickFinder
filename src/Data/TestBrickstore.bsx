@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BrickStoreXML>
+ <Inventory Currency="EUR" BrickLinkChangelogId="430760">
+  <Item>
+   <ItemID>sw1366</ItemID>
+   <ItemTypeID>M</ItemTypeID>
+   <ColorID>0</ColorID>
+   <ItemName>Darth Dev (Darth Devastator)</ItemName>
+   <ItemTypeName>Minifigure</ItemTypeName>
+   <ColorName>(Not Applicable)</ColorName>
+   <CategoryID>65</CategoryID>
+   <CategoryName>Star Wars</CategoryName>
+   <Status>I</Status>
+   <Qty>1</Qty>
+   <Price>0.000</Price>
+   <Condition>N</Condition>
+   <Remarks>L1.1</Remarks>
+   <DateAdded>2025-03-24T06:55:24Z</DateAdded>
+   <DifferenceBaseValues Remarks=""/>
+  </Item>
+  <Item>
+   <ItemID>3010</ItemID>
+   <ItemTypeID>P</ItemTypeID>
+   <ColorID>153</ColorID>
+   <ItemName>Brick 1 x 4</ItemName>
+   <ItemTypeName>Part</ItemTypeName>
+   <ColorName>Dark Azure</ColorName>
+   <CategoryID>5</CategoryID>
+   <CategoryName>Brick</CategoryName>
+   <Status>I</Status>
+   <Qty>1</Qty>
+   <Price>0.000</Price>
+   <Condition>N</Condition>
+   <Remarks>L1.2</Remarks>
+   <DateAdded>2025-03-24T06:55:58Z</DateAdded>
+   <DifferenceBaseValues Remarks=""/>
+  </Item>
+ </Inventory>
+ <GuiState Application="BrickStore" Version="2">
+  <ColumnLayout Compressed="1"><![CDATA[AAABa3icNc87DwFREIbhGZZl3e+su0UUGp1Eq1Ipaf1C/5CZZN6TfMmTb+ac7N5O74uIlC1Hi/7sqCGXOGdvHa9Yk7slcXwtFYmbVcfHktLUNFAHmY+uloYGmqDFqA06vNMFPUZDMHI8LWMwYXnKzowmp5nTLGiWYAXWYAO2oOD6nmbgeFhKGujzXzuN7z3IHywSEEs=]]></ColumnLayout>
+  <SortFilterState Compressed="1"><![CDATA[AAAAHHicY2BgYAl2Cw5hANKM/xlAgIkBAhgBK/ACTA==]]></SortFilterState>
+ </GuiState>
+</BrickStoreXML>
