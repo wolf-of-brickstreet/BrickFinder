@@ -74,9 +74,10 @@ export default function MainComponent(){
     };
 
     return (
-        <div>
-            <h1>Hello, wolmic!</h1>
-            <ItemCardComponent items={items} />
+        <div style={{display: "flex", gap: "10px", flexDirection: "row"}}>
+            { items?.map((item) => (
+                <ItemCardComponent item={item} />
+            ))}
         </div>
     );
 }

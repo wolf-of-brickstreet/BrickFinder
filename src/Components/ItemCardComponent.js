@@ -1,13 +1,11 @@
+import './ItemCardStyles.css'
+
 export default function ItemCardComponent(props){
 
     return (
-        <div>
-            { props.items?.map((item) => (
-                <div>
-                    <span>{item.name}</span>
-                    <span> {item.color}</span>
-                </div>
-            ))}
+        <div className="card">
+            <span>{props.item.name}</span>
+            <span> {props.item.color}</span>
         </div>
     );
 }
