@@ -5,6 +5,8 @@ import Item from '../Model/Item.js'
 import { useEffect, useState } from 'react';
 import ItemCardComponent from './ItemCardComponent.js';
 
+import './MainComponentStyles.css'
+
 export default function MainComponent(){
     const [items, setItems] = useState();
 
@@ -74,7 +76,7 @@ export default function MainComponent(){
     };
 
     return (
-        <div style={{display: "flex", gap: "10px", flexDirection: "row"}}>
+        <div className='cards'>
             { items?.map((item) => (
                 <ItemCardComponent item={item} />
             ))}
