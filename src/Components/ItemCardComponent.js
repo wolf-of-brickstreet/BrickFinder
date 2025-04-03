@@ -1,5 +1,4 @@
 import './ItemCardStyles.css'
-import { PrimaryButton } from '@fluentui/react/lib/Button';
 
 export default function ItemCardComponent(props){
 
@@ -7,7 +6,6 @@ export default function ItemCardComponent(props){
         <div className="card">
             <span>{props.item.name}</span>
             <span> {props.item.color}</span>
-            {/* <PrimaryButton text="Standard" /> */}
         </div>
     );
 }
