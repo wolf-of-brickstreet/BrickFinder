@@ -1,0 +1,38 @@
+export default class Item {
+    id: string;
+    name: string;
+    type: string;
+    typeId: string;
+    color: string;
+    colorId: number;
+    category: string;
+    remark: string;
+    image: string;
+
+    constructor(id: string, name: string, type: string, typeId: string, color: string, colorId: number, category: string, remark: string){
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.typeId = typeId;
+        this.color = color;
+        this.colorId = colorId;
+        this.category = category;
+        this.remark = remark;
+        this.image = this.getItemImageUrl();
+    };
+
+    getItemImageUrl() {
+        var fileExt = "jpg";
+        var tmpColorId = this.colorId;
+
+        if (this.colorId === 0) {
+            fileExt = "gif";
+            tmpColorId = 1;
+        }
+        if (this.typeId === "P") {
+            return `https://img.bricklink.com/${this.typeId}/${tmpColorId}/${this.id}.${fileExt}`;
+        } else {
+            return `https://img.bricklink.com/${this.typeId}/${this.id}.jpg`
+        }
+    };
+}

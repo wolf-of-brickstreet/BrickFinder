@@ -21,7 +21,24 @@
   <Item>
    <ItemID>3010</ItemID>
    <ItemTypeID>P</ItemTypeID>
-   <ColorID>153</ColorID>
+   <ColorID>0</ColorID>
+   <ItemName>Brick 1 x 4</ItemName>
+   <ItemTypeName>Part</ItemTypeName>
+   <ColorName>(Not Applicable)</ColorName>
+   <CategoryID>5</CategoryID>
+   <CategoryName>Brick</CategoryName>
+   <Status>I</Status>
+   <Qty>1</Qty>
+   <Price>0.000</Price>
+   <Condition>N</Condition>
+   <Remarks>L1.2</Remarks>
+   <DateAdded>2025-03-24T06:55:58Z</DateAdded>
+   <DifferenceBaseValues Remarks=""/>
+  </Item>
+  <Item>
+   <ItemID>3010</ItemID>
+   <ItemTypeID>P</ItemTypeID>
+   <ColorID>152</ColorID>
    <ItemName>Brick 1 x 4</ItemName>
    <ItemTypeName>Part</ItemTypeName>
    <ColorName>Dark Azure</ColorName>
@@ -38,24 +55,7 @@
   <Item>
    <ItemID>3010</ItemID>
    <ItemTypeID>P</ItemTypeID>
-   <ColorID>153</ColorID>
-   <ItemName>Brick 1 x 4</ItemName>
-   <ItemTypeName>Part</ItemTypeName>
-   <ColorName>Dark Azure</ColorName>
-   <CategoryID>5</CategoryID>
-   <CategoryName>Brick</CategoryName>
-   <Status>I</Status>
-   <Qty>1</Qty>
-   <Price>0.000</Price>
-   <Condition>N</Condition>
-   <Remarks>L1.2</Remarks>
-   <DateAdded>2025-03-24T06:55:58Z</DateAdded>
-   <DifferenceBaseValues Remarks=""/>
-  </Item>
-  <Item>
-   <ItemID>3010</ItemID>
-   <ItemTypeID>P</ItemTypeID>
-   <ColorID>153</ColorID>
+   <ColorID>150</ColorID>
    <ItemName>Brick 1 x 4</ItemName>
    <ItemTypeName>Part</ItemTypeName>
    <ColorName>Dark Azure</ColorName>

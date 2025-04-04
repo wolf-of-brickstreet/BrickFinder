@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import XMLData from '../Data/TestBrickstore.bsx'
 import axios from 'axios'
-import Item from '../Model/Item.js'
+import Item from '../Model/Item.ts'
 import { useEffect, useState } from 'react';
 import ItemCardComponent from './ItemCardComponent.js';
 
@@ -64,7 +64,9 @@ export default function MainComponent(){
                     entry.ItemID["#text"],
                     entry.ItemName["#text"],
                     entry.ItemTypeName["#text"],
+                    entry.ItemTypeID["#text"],
                     entry.ColorName["#text"],
+                    Number(entry.ColorID["#text"]),
                     entry.CategoryName["#text"],
                     entry.Remarks["#text"]
                 );
@@ -76,10 +78,14 @@ export default function MainComponent(){
     };
 
     return (
-        <div className='cards'>
-            { items?.map((item) => (
-                <ItemCardComponent item={item} />
-            ))}
+        <div>
+            <input placeholder='Search...'/>
+            <div className='cards'>
+                { items?.map((item) => (
+                    <ItemCardComponent key={item.id + item.color} item={item} />
+                ))}
+            </div>
         </div>
+        
     );
 }
