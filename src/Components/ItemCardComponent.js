@@ -6,7 +6,7 @@ export default function ItemCardComponent(props){
         <div className="card">
             <span>{props.item.name}</span>
             <span> {props.item.color}</span>
-            <img src={props.item.image} alt={props.item.name + props.item.color} />
+            <img src={props.item.image} alt={props.item.name + " in " + props.item.color} />
         </div>
     );
 }
