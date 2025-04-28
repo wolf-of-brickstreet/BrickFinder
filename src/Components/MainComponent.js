@@ -9,6 +9,7 @@ import './MainComponentStyles.css'
 
 export default function MainComponent(){
     const [items, setItems] = useState();
+    const [itemsByStorage, setItemsByStorage] = useState([]);
 
     useEffect(() => {
         readXML();
@@ -48,7 +49,6 @@ export default function MainComponent(){
     }
         
     function readXML() {
-        console.log("halle xml");
         var xml;
         axios.get(XMLData, {
             "Content-Type": "application/xml; charset=utf-8"
@@ -71,18 +71,51 @@ export default function MainComponent(){
                     entry.Remarks["#text"]
                 );
                 tmpItems.push(item);
+                
             }
+            sortItemsByStorage(tmpItems);
             setItems(tmpItems);
-            console.log(tmpItems);
         });
     };
+
+    function sortItemsByStorage(items) {
+        var tmpItemsByStorage = [...itemsByStorage];
+        for(const item of items) {
+            if (tmpItemsByStorage.length > 0) {
+                var itemStorage = item.remark.split(".")[0];
+                var storageFound = false;
+    
+                for (const storage of tmpItemsByStorage) {
+                    if (itemStorage === storage[0].remark.split(".")[0]) {
+                        storage.push(item);
+                        storageFound = true;
+                        continue;
+                    }
+                }
+                if (!storageFound) {
+                    tmpItemsByStorage.push([item]);    
+                }
+            } else {
+                tmpItemsByStorage.push([item]);
+            }
+        }
+        setItemsByStorage([...tmpItemsByStorage]);
+        
+    }
 
     return (
         <div>
             <input placeholder='Search...'/>
             <div className='cards'>
-                { items?.map((item) => (
-                    <ItemCardComponent key={item.id + item.color} item={item} />
+                { itemsByStorage?.map((storage, index) => (
+                    <div className='cards' key={ storage[0].remark.split('.')[0] }>
+                        <div>{ storage[0].remark.split('.')[0] }</div>
+                        <div className='cards'>
+                            { storage?.map((item) => (
+                                <ItemCardComponent key={item.id + item.color} item={item} />
+                            ))}
+                        </div>
+                    </div>
                 ))}
             </div>
         </div>
