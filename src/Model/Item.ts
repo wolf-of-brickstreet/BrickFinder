@@ -30,7 +30,7 @@ export default class Item {
             tmpColorId = 1;
         }
         if (this.typeId === "P") {
-            return `https://img.bricklink.com/${this.typeId}/${tmpColorId}/${this.id}.${fileExt}`;
+            return `https://img.bricklink.com/ItemImage/PT/${this.colorId}/${this.id}.t1.png`;
         } else {
             return `https://img.bricklink.com/${this.typeId}/${this.id}.jpg`
         }

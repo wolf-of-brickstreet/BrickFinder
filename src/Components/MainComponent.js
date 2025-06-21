@@ -106,9 +106,9 @@ export default function MainComponent(){
     return (
         <div>
             <input placeholder='Search...'/>
-            <div className='cards'>
+            <div>
                 { itemsByStorage?.map((storage, index) => (
-                    <div className='cards' key={ storage[0].remark.split('.')[0] }>
+                    <div key={ storage[0].remark.split('.')[0] }>
                         <div>{ storage[0].remark.split('.')[0] }</div>
                         <div className='cards'>
                             { storage?.map((item) => (
