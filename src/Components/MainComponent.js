@@ -104,12 +104,15 @@ export default function MainComponent(){
     }
 
     return (
-        <div>
-            <input placeholder='Search...'/>
+        <div className="mainContainer">
+            <div className="header">
+                <span className="heading">BRICKFINDER</span>
+            </div>
+            <input className="searchInput" placeholder='Search...'/>
             <div>
                 { itemsByStorage?.map((storage, index) => (
                     <div key={ storage[0].remark.split('.')[0] }>
-                        <div>{ storage[0].remark.split('.')[0] }</div>
+                        <div className="heading">{ storage[0].remark.split('.')[0] }</div>
                         <div className='cards'>
                             { storage?.map((item) => (
                                 <ItemCardComponent key={item.id + item.color} item={item} />
