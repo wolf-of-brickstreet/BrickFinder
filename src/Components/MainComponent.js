@@ -7,6 +7,9 @@ import ItemCardComponent from './ItemCardComponent.js';
 
 import './MainComponentStyles.css'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCamera } from '@fortawesome/free-solid-svg-icons'
+
 export default function MainComponent(){
     const [items, setItems] = useState();
     const [itemsByStorage, setItemsByStorage] = useState([]);
@@ -133,7 +136,10 @@ export default function MainComponent(){
             <div className="header">
                 <span className="heading">BRICKSTORAGE</span>
             </div>
-            <input className="searchInput" placeholder='Search...' value={inputValue} onChange={(e) => setInputValue(e.target.value)}/>
+            <div className="filterDiv">
+                <input className="searchInput" placeholder='Search...' value={inputValue} onChange={(e) => setInputValue(e.target.value)}/>
+                <FontAwesomeIcon icon={faCamera} />
+            </div>
             <div>
                 { filteredItemsByStorage?.map((storage, index) => (
                     <div key={ storage[0]?.remark.split('.')[0] }>

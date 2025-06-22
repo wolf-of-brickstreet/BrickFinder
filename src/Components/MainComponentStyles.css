@@ -38,3 +38,11 @@
   flex-direction: column;
   align-items: center;
 }
+
+.filterDiv {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
