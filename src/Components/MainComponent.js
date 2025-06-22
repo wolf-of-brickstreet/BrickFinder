@@ -4,6 +4,7 @@ import axios from 'axios'
 import Item from '../Model/Item.ts'
 import { useEffect, useState } from 'react';
 import ItemCardComponent from './ItemCardComponent.js';
+import CameraPopupComponent from './CameraPopupComponent.js';
 
 import './MainComponentStyles.css'
 
@@ -16,6 +17,8 @@ export default function MainComponent(){
     const [filteredItemsByStorage, setFilteredItemsByStorage] = useState([]);
     const [inputValue, setInputValue] = useState('');
     const [debouncedValue, setDebouncedValue] = useState('');
+    const [cameraOpen, setCameraOpen] = useState(false);
+
     let inputTimer;
 
     useEffect(() => {
@@ -138,8 +141,13 @@ export default function MainComponent(){
             </div>
             <div className="filterDiv">
                 <input className="searchInput" placeholder='Search...' value={inputValue} onChange={(e) => setInputValue(e.target.value)}/>
-                <FontAwesomeIcon icon={faCamera} />
+                <FontAwesomeIcon icon={faCamera} onClick={() => setCameraOpen(true)} />
             </div>
+
+            <CameraPopupComponent
+                isOpen={cameraOpen}
+                onClose={() => setCameraOpen(false)}
+            />
             <div>
                 { filteredItemsByStorage?.map((storage, index) => (
                     <div key={ storage[0]?.remark.split('.')[0] }>
