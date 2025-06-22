@@ -10,10 +10,36 @@ import './MainComponentStyles.css'
 export default function MainComponent(){
     const [items, setItems] = useState();
     const [itemsByStorage, setItemsByStorage] = useState([]);
+    const [filteredItemsByStorage, setFilteredItemsByStorage] = useState([]);
+    const [inputValue, setInputValue] = useState('');
+    const [debouncedValue, setDebouncedValue] = useState('');
+    let inputTimer;
 
     useEffect(() => {
         readXML();
     }, [])
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+        setDebouncedValue(inputValue);
+        }, 500); // 500 ms warten nach letztem Input
+
+        return () => clearTimeout(timer); // Timer abbrechen, wenn sich inputValue erneut ändert
+    }, [inputValue]);
+
+    useEffect(() => {
+        if (debouncedValue) {
+            console.log('Suche mit:', debouncedValue);
+            var tmpItems = [];
+            for (const storage of itemsByStorage) {
+                var test = storage.filter(part => part.name.toLowerCase().includes(debouncedValue.toLowerCase()) || part.id.toLowerCase().includes(debouncedValue.toLowerCase()));
+            tmpItems.push(test);
+            }
+            setFilteredItemsByStorage([...tmpItems]);
+        } else {
+            setFilteredItemsByStorage([...itemsByStorage]);
+        }
+    }, [debouncedValue]);
 
     function xmlToJson(xml) {
         let obj = {};
@@ -59,7 +85,6 @@ export default function MainComponent(){
             var jsonObj = xmlToJson(xml.documentElement);
             var tmpItems = [];
             for (const entry of jsonObj.Inventory.Item) {
-                // debugger;
                 var item = new Item(
                     entry.ItemID["#text"],
                     entry.ItemName["#text"],
@@ -100,7 +125,7 @@ export default function MainComponent(){
             }
         }
         setItemsByStorage([...tmpItemsByStorage]);
-        
+        setFilteredItemsByStorage([...tmpItemsByStorage]);
     }
 
     return (
@@ -108,11 +133,11 @@ export default function MainComponent(){
             <div className="header">
                 <span className="heading">BRICKFINDER</span>
             </div>
-            <input className="searchInput" placeholder='Search...'/>
+            <input className="searchInput" placeholder='Search...' value={inputValue} onChange={(e) => setInputValue(e.target.value)}/>
             <div>
-                { itemsByStorage?.map((storage, index) => (
-                    <div key={ storage[0].remark.split('.')[0] }>
-                        <div className="heading">{ storage[0].remark.split('.')[0] }</div>
+                { filteredItemsByStorage?.map((storage, index) => (
+                    <div key={ storage[0]?.remark.split('.')[0] }>
+                        <div className="heading">{ storage[0]?.remark.split('.')[0] }</div>
                         <div className='cards'>
                             { storage?.map((item) => (
                                 <ItemCardComponent key={item.id + item.color} item={item} />
