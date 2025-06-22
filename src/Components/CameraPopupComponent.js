@@ -1,13 +1,15 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 function CameraPopupComponent({ isOpen, onClose }) {
+  const [cameraFacingMode, setCameraFacingMode] = useState(`user`);
+
   const videoRef = useRef(null);
   let streamRef = useRef(null);
 
   useEffect(() => {
     if (!isOpen) return;
 
-    navigator.mediaDevices.getUserMedia({  video: { facingMode: 'user' } })
+    navigator.mediaDevices.getUserMedia({  video: { facingMode: cameraFacingMode } })
       .then((stream) => {
         streamRef.current = stream;
         if (videoRef.current && stream) {
@@ -24,13 +26,17 @@ function CameraPopupComponent({ isOpen, onClose }) {
         streamRef.current.getTracks().forEach(track => track.stop());
       }
     };
-  }, [isOpen]);
+  }, [isOpen, cameraFacingMode]);
 
   if (!isOpen) return null;
 
   return (
     <div style={styles.overlay}>
       <div style={styles.popup}>
+        <select id="cameras" name="cameras" onChange={(event) => setCameraFacingMode(event.target.value)}>
+            <option value="user">front camera</option>
+            <option value="environment">main camera</option>
+        </select>
         <video ref={videoRef} autoPlay playsInline muted style={{ width: '100%' }} />
         <button onClick={onClose} style={styles.closeBtn}>Schließen</button>
       </div>
