@@ -1,4 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
+import BrickResultComponent from './BrickResultComponent.js';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCameraRotate, faXmark, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+
+import './CameraPopupComponentStyles.css';
+import { height } from '@fortawesome/free-solid-svg-icons/fa0';
 
 function CameraPopupComponent({ isOpen, onClose }) {
   const [cameraFacingMode, setCameraFacingMode] = useState(`user`);
@@ -7,6 +14,7 @@ function CameraPopupComponent({ isOpen, onClose }) {
   const canvasRef = useRef(null);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
+  const [showCamera, setShowCamera] = useState(true);
   let streamRef = useRef(null);
 
   useEffect(() => {
@@ -74,27 +82,44 @@ function CameraPopupComponent({ isOpen, onClose }) {
     }, 'image/jpeg');
   };
 
+  function handleCameraSwitch() {
+    cameraFacingMode === `user` ? setCameraFacingMode(`environment`) : setCameraFacingMode(`user`);
+  }
+
+  function renderResults() {
+    return (
+      <div className="resultContainer">
+        <div className="backButtonContainer">
+          <FontAwesomeIcon icon={faArrowLeft} onClick={() => setResult(null)} className="backButton"/>
+          <FontAwesomeIcon icon={faXmark} onClick={onClose} className="backButton"/>
+        </div>
+        { result.items.map((brick) => <BrickResultComponent brick={brick}/> )}
+      </div>
+    )
+  }
+
   if (!isOpen) return null;
 
   return (
     <div style={styles.overlay}>
       <div style={styles.popup}>
-        <select id="cameras" name="cameras" onChange={(event) => setCameraFacingMode(event.target.value)}>
-            <option value="user">front camera</option>
-            <option value="environment">main camera</option>
-        </select>
-        <video ref={videoRef} autoPlay playsInline muted style={{ width: '100%' }} />
-        <canvas ref={canvasRef} style={{ display: 'none' }} />
-        <div>
-          <button onClick={() => handleCapture()} disabled={loading}>
-            📸 Foto aufnehmen
-          </button>
-          <button onClick={onClose} style={styles.closeBtn}>Schließen</button>
+        <div className='cameraContainer' style={{ display: result ? 'none' : 'block' }}>
+          <video ref={videoRef} autoPlay playsInline muted className="cameraVideo" />
+          <canvas ref={canvasRef} style={{ display: 'none' }} />
+          <div className='cameraControls'>
+            <div className='buttonContainer'>
+              <FontAwesomeIcon icon={faCameraRotate} onClick={() => handleCameraSwitch()} className="imageButton"/>
+              <div className="outer-ring" onClick={() => handleCapture()} disabled={loading}>
+                <div className="inner-circle"></div>
+              </div>
+              <FontAwesomeIcon icon={faXmark} onClick={onClose} className="imageButton"/>
+            </div>
+          </div>
+        </div>
+        <div className="resultContainer">
           {loading && <p>Lade...</p>}
           {result && (
-            <pre style={{ marginTop: 10, maxHeight: 200, overflow: 'auto' }}>
-              {JSON.stringify(result, null, 2)}
-            </pre>
+            <div>{ renderResults() }</div>
           )}
         </div>
       </div>
@@ -110,8 +135,8 @@ const styles = {
     zIndex: 1000,
   },
   popup: {
-    background: 'white', padding: 20, borderRadius: 8, width: '90%', maxWidth: 400,
-    position: 'relative'
+    background: 'white', borderRadius: '10px', width: '90%', maxWidth: 400,
+    position: 'relative', height: `70%`
   },
   closeBtn: {
     marginTop: 10, padding: '8px 16px'
