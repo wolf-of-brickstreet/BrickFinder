@@ -147,6 +147,7 @@ export default function MainComponent(){
             <CameraPopupComponent
                 isOpen={cameraOpen}
                 onClose={() => setCameraOpen(false)}
+                itemsByStorage={itemsByStorage}
             />
             <div>
                 { filteredItemsByStorage?.map((storage, index) => (

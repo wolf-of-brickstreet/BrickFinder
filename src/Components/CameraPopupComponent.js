@@ -5,16 +5,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCameraRotate, faXmark, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 import './CameraPopupComponentStyles.css';
-import { height } from '@fortawesome/free-solid-svg-icons/fa0';
+import ResultListComponent from './ResultListComponent.js'
 
-function CameraPopupComponent({ isOpen, onClose }) {
-  const [cameraFacingMode, setCameraFacingMode] = useState(`user`);
+function CameraPopupComponent({ isOpen, onClose, itemsByStorage }) {
+  const [cameraFacingMode, setCameraFacingMode] = useState(`environment`);
 
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
-  const [showCamera, setShowCamera] = useState(true);
   let streamRef = useRef(null);
 
   useEffect(() => {
@@ -93,7 +92,7 @@ function CameraPopupComponent({ isOpen, onClose }) {
           <FontAwesomeIcon icon={faArrowLeft} onClick={() => setResult(null)} className="backButton"/>
           <FontAwesomeIcon icon={faXmark} onClick={onClose} className="backButton"/>
         </div>
-        { result.items.map((brick) => <BrickResultComponent brick={brick}/> )}
+        <ResultListComponent bricks={result.items} itemsByStorage={itemsByStorage} />
       </div>
     )
   }
