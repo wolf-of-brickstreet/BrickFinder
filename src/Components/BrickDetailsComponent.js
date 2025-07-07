@@ -9,6 +9,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByStorage }) {
+    const [colors, setColors] = useState([]);
+
+    useEffect(() => {
+      fetch('/bricklink-colors.json')
+        .then(res => res.json())
+        .then(data => setColors(data))
+        .catch(err => console.error('Fehler beim Laden der Farben:', err));
+    }, []);
 
     useEffect(() => {
         if (!isOpen) return;
@@ -105,16 +113,29 @@ export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByS
     return (
         <div style={styles.overlay}>
             <div style={styles.popup}>
-                <div className="detailsContainer">
-                  <div className="closeButtonContainer">
-                    <FontAwesomeIcon icon={faXmark} onClick={() =>{console.log("onclose"); onClose()} } className="closeButton"/>
+                <div className="closeButtonContainer">
+                  <FontAwesomeIcon icon={faXmark} onClick={() =>{console.log("onclose"); onClose()} } className="closeButton"/>
+                </div>
+                <div className="detailsContainer" id='details'>
+                  <img src={brick.img_url} className="brickDetailsImage"/>
+                  <div className="detailsRow"><strong>Name:</strong><div>{brick.name}</div></div>
+                  <div className="detailsRow"><strong>Id:</strong><div>{brick.id}</div></div>
+                  <div className="detailsRow"><strong>Type:</strong><div>{brick.type}</div></div>
+                  { itemsByStorage.map((storage) => findItemInStorage(storage))}
+                  <button onClick={()=> saveAsNewBrick()}>save</button>
+                </div>
+                <div className="detailsContainer" id='inputs'>
+                  <div className="detailsRow"><strong>Qty:</strong><input id='qtyInput' /></div>
+                  <div className="detailsRow"><strong>Storage:</strong><input id='remarksInput' /></div>
+                  <div className="detailsRow"><strong>Storage:</strong>
+                    <select id="colorSelect">
+                      {colors.map(color => (
+                        <option key={color.ID} value={color.ID}>
+                          {color.Name}
+                        </option>
+                      ))}
+                    </select>
                   </div>
-                    <img src={brick.img_url} className="brickDetailsImage"/>
-                    <div className="detailsRow"><strong>Name:</strong><div>{brick.name}</div></div>
-                    <div className="detailsRow"><strong>Id:</strong><div>{brick.id}</div></div>
-                    <div className="detailsRow"><strong>Type:</strong><div>{brick.type}</div></div>
-                    { itemsByStorage.map((storage) => findItemInStorage(storage))}
-                    <button onClick={()=> saveAsNewBrick()}>save</button>
                 </div>
             </div>
         </div>
@@ -130,7 +151,8 @@ const styles = {
   },
   popup: {
     background: 'white', borderRadius: '10px', width: '90%', maxWidth: 400,
-    position: 'relative', height: `70%`
+    position: 'relative', height: `70%`,
+    overflowY: 'auto', overflowX: 'hidden'
   },
   closeBtn: {
     marginTop: 10, padding: '8px 16px'
