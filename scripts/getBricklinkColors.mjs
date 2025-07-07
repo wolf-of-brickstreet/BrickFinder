@@ -81,7 +81,7 @@ import fs from 'fs';
 
 
     console.log(`🎨 ${colors.length} Farben gefunden`);
-    fs.writeFileSync('./colors.json', JSON.stringify(colors, null, 2), 'utf-8');
+    fs.writeFileSync('../public/bricklink-colors.json', JSON.stringify(colors, null, 2), 'utf-8');
     console.log('📁 Farben gespeichert in colors.json');
   } catch (err) {
     console.error('❌ Fehler beim Abrufen oder Verarbeiten:', err);
