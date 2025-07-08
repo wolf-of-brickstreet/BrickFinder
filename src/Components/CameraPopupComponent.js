@@ -8,35 +8,77 @@ import './CameraPopupComponentStyles.css';
 import ResultListComponent from './ResultListComponent.js'
 
 function CameraPopupComponent({ isOpen, onClose, itemsByStorage }) {
-  const [cameraFacingMode, setCameraFacingMode] = useState(`environment`);
+  const [devices, setDevices] = useState([]);
+  const [activeDeviceId, setActiveDeviceId] = useState(null);
 
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
-  let streamRef = useRef(null);
+  const streamRef = useRef(null);
 
+  // Geräte beim Öffnen oder erstmalig laden holen
   useEffect(() => {
     if (!isOpen) return;
 
-    navigator.mediaDevices.getUserMedia({  video: { facingMode: cameraFacingMode } })
-      .then((stream) => {
-        streamRef.current = stream;
-        if (videoRef.current && stream) {
-            videoRef.current.srcObject = stream;
-            videoRef.current.play(); // Sicherheitshalber explizit starten
-            }
-      })
-      .catch((err) => {
-        console.error('Kamera-Zugriff fehlgeschlagen:', err);
-      });
+    async function getVideoDevices() {
+      try {
+        const allDevices = await navigator.mediaDevices.enumerateDevices();
+        const videoDevices = allDevices.filter(device => device.kind === 'videoinput');
+        setDevices(videoDevices);
+        // Falls noch keine Kamera aktiv, erste Kamera setzen
+        if (!activeDeviceId && videoDevices.length > 0) {
+          setActiveDeviceId(videoDevices[0].deviceId);
+        }
+      } catch (err) {
+        console.error('Fehler beim Auflisten der Geräte:', err);
+      }
+    }
+    getVideoDevices();
+  }, [isOpen, activeDeviceId]);
 
-    return () => {
+  // Kamera-Stream starten, wenn activeDeviceId oder isOpen sich ändert
+  useEffect(() => {
+    if (!isOpen || !activeDeviceId) return;
+
+    async function startCamera() {
       if (streamRef.current) {
         streamRef.current.getTracks().forEach(track => track.stop());
       }
+
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: { deviceId: { exact: activeDeviceId } }
+        });
+        streamRef.current = stream;
+        if (videoRef.current) {
+          videoRef.current.srcObject = stream;
+          await videoRef.current.play();
+        }
+      } catch (err) {
+        console.error('Kamera-Zugriff fehlgeschlagen:', err);
+      }
+    }
+
+    startCamera();
+
+    // Aufräumen beim Schließen oder Wechseln
+    return () => {
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach(track => track.stop());
+        streamRef.current = null;
+      }
     };
-  }, [isOpen, cameraFacingMode]);
+  }, [isOpen, activeDeviceId]);
+
+  // Kamera wechseln: nächstes deviceId im Array wählen
+  function handleCameraSwitch() {
+    if (devices.length < 2) return; // keine Alternative
+
+    const currentIndex = devices.findIndex(d => d.deviceId === activeDeviceId);
+    const nextIndex = (currentIndex + 1) % devices.length;
+    setActiveDeviceId(devices[nextIndex].deviceId);
+  }
 
   const handleCapture = async () => {
     if (!videoRef.current || !canvasRef.current) return;
@@ -64,7 +106,6 @@ function CameraPopupComponent({ isOpen, onClose, itemsByStorage }) {
         const response = await fetch('https://api.brickognize.com/predict/', {
           method: 'POST',
           headers: {
-            // Achtung: KEIN Content-Type setzen bei multipart/form-data!
             accept: 'application/json',
           },
           body: formData,
@@ -80,10 +121,6 @@ function CameraPopupComponent({ isOpen, onClose, itemsByStorage }) {
       }
     }, 'image/jpeg');
   };
-
-  function handleCameraSwitch() {
-    cameraFacingMode === `user` ? setCameraFacingMode(`environment`) : setCameraFacingMode(`user`);
-  }
 
   function renderResults() {
     return (
@@ -107,8 +144,8 @@ function CameraPopupComponent({ isOpen, onClose, itemsByStorage }) {
           <canvas ref={canvasRef} style={{ display: 'none' }} />
           <div className='cameraControls'>
             <div className='buttonContainer'>
-              <FontAwesomeIcon icon={faCameraRotate} onClick={() => handleCameraSwitch()} className="imageButton"/>
-              <div className="outer-ring" onClick={() => handleCapture()} disabled={loading}>
+              <FontAwesomeIcon icon={faCameraRotate} onClick={handleCameraSwitch} className="imageButton"/>
+              <div className="outer-ring" onClick={handleCapture} disabled={loading}>
                 <div className="inner-circle"></div>
               </div>
               <FontAwesomeIcon icon={faXmark} onClick={onClose} className="imageButton"/>
