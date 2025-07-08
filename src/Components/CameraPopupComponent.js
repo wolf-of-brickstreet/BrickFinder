@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import BrickResultComponent from './BrickResultComponent.js';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCameraRotate, faXmark, faArrowLeft } from '@fortawesome/free-solid-svg-icons';

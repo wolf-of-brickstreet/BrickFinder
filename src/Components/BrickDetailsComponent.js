@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import XMLData from '../Data/TestBrickstore.bsx'
 import axios from 'axios'
@@ -10,6 +10,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByStorage }) {
     const [bricklinkColors, setBricklinkColors] = useState([]);
+    const [remarkValue, setRemarkValue] = useState('');
 
     useEffect(() => {
       fetch('http://localhost:3001/colors')
@@ -72,7 +73,7 @@ export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByS
             item.appendChild(createElementWithText('Qty', 0)); // TODO input
             item.appendChild(createElementWithText('Price', 0.000));
             item.appendChild(createElementWithText('Condition', "N"));
-            item.appendChild(createElementWithText('Remarks', "test")); // TODO input
+            item.appendChild(createElementWithText('Remarks', remarkValue)); // TODO input
             item.appendChild(createElementWithText('DateAdded', (new Date()).toISOString()));
             // <ItemID>sw1366</ItemID>
             // <ItemTypeID>M</ItemTypeID>
@@ -127,7 +128,7 @@ export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByS
                 </div>
                 <div className="detailsContainer" id='inputs'>
                   <div className="detailsRow"><strong>Qty:</strong><input id='qtyInput' /></div>
-                  <div className="detailsRow"><strong>Storage:</strong><input id='remarksInput' /></div>
+                  <div className="detailsRow"><strong>Storage:</strong><input type='text' id='remarksInput' value={remarkValue} onChange={(e) => setRemarkValue(e.target.value)} /></div>
                   <div className="detailsRow"><strong>Storage:</strong>
                     <select id="colorSelect">
                       {bricklinkColors.map(color => (
@@ -152,7 +153,8 @@ const styles = {
   },
   popup: {
     background: 'white', borderRadius: '10px', width: '90%', maxWidth: 400,
-    position: 'relative', height: `70%`
+    position: 'relative', height: `70%`,
+    overflowY: 'auto', overflowX: 'hidden'
   },
   closeBtn: {
     marginTop: 10, padding: '8px 16px'
