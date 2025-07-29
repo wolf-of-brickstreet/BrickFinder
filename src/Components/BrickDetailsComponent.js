@@ -11,6 +11,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByStorage }) {
     const [bricklinkColors, setBricklinkColors] = useState([]);
     const [remarkValue, setRemarkValue] = useState('');
+    const [selectedColor, setSelectedColor] = useState({id: -1, name: "(Not Applicable)"});
 
     useEffect(() => {
       fetch('http://localhost:3001/colors')
@@ -65,8 +66,8 @@ export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByS
             item.appendChild(createElementWithText('ItemName', brick.name));
             item.appendChild(createElementWithText('ItemTypeName', brick.type));
             item.appendChild(createElementWithText('ItemTypeID', typeId));
-            item.appendChild(createElementWithText('ColorName', "(Not Applicable)")); // TODO dropdown
-            item.appendChild(createElementWithText('ColorID', 0)); // TODO dropdown
+            item.appendChild(createElementWithText('ColorName', selectedColor.name));
+            item.appendChild(createElementWithText('ColorID', selectedColor.id));
             item.appendChild(createElementWithText('CategoryName', brick.category));
             item.appendChild(createElementWithText('CategoryID', 0)); // TODO ID rausfinden
             item.appendChild(createElementWithText('Status', "I"));
@@ -110,6 +111,12 @@ export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByS
       }
     };
 
+    const handleColorChange = (e) => {
+      const selectedItem = bricklinkColors.find(f => f.id === e.target.value);
+      setSelectedColor(selectedItem);
+      console.log("Gefundene Farbe:", selectedItem);
+    };
+
     if (!isOpen) return null;
 
     return (
@@ -130,7 +137,7 @@ export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByS
                   <div className="detailsRow"><strong>Qty:</strong><input id='qtyInput' /></div>
                   <div className="detailsRow"><strong>Storage:</strong><input type='text' id='remarksInput' value={remarkValue} onChange={(e) => setRemarkValue(e.target.value)} /></div>
                   <div className="detailsRow"><strong>Storage:</strong>
-                    <select id="colorSelect">
+                    <select id="colorSelect" onChange={handleColorChange}>
                       {bricklinkColors.map(color => (
                         <option key={color.id} value={color.id}>
                           {color.name}
