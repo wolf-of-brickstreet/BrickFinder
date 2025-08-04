@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import XMLData from '../Data/TestBrickstore.bsx'
 import axios from 'axios'
 
+import { v4 as uuidv4 } from 'uuid';
+
 import './BrickDetailsComponentStyles.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -27,7 +29,7 @@ export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByS
 
     function findItemInStorage(storage) {
       if (storage.length > 0) {
-        const hits = storage.filter(item => item.id === brick.id);
+        const hits = storage.filter(item => item.partId === brick.id);
         if (hits.length > 0) {
           return (
             <div key={storage[0].remark.split(".")[0]}>
@@ -54,6 +56,7 @@ export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByS
             }
 
             const item = xml.createElement('Item');
+            item.setAttribute("id", uuidv4());
 
             const createElementWithText = (tag, text) => {
               const el = xml.createElement(tag);
@@ -62,7 +65,7 @@ export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByS
             };
 
             const typeId = brick.type === "part" ? "P" : "M";
-            item.appendChild(createElementWithText('ItemID', brick.id));
+            item.appendChild(createElementWithText('ItemID', brick.partId));
             item.appendChild(createElementWithText('ItemName', brick.name));
             item.appendChild(createElementWithText('ItemTypeName', brick.type));
             item.appendChild(createElementWithText('ItemTypeID', typeId));
@@ -128,7 +131,7 @@ export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByS
                 <div className="detailsContainer" id='details'>
                   <img src={brick.img_url} className="brickDetailsImage"/>
                   <div className="detailsRow"><strong>Name:</strong><div>{brick.name}</div></div>
-                  <div className="detailsRow"><strong>Id:</strong><div>{brick.id}</div></div>
+                  <div className="detailsRow"><strong>Id:</strong><div>{brick.partId}</div></div>
                   <div className="detailsRow"><strong>Type:</strong><div>{brick.type}</div></div>
                   { itemsByStorage.map((storage) => findItemInStorage(storage))}
                   <button onClick={()=> saveAsNewBrick()}>save</button>

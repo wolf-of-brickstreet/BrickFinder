@@ -1,5 +1,6 @@
 export default class Item {
     id: string;
+    partId: string;
     name: string;
     type: string;
     typeId: string;
@@ -9,8 +10,9 @@ export default class Item {
     remark: string;
     image: string;
 
-    constructor(id: string, name: string, type: string, typeId: string, color: string, colorId: number, category: string, remark: string){
+    constructor(id: string, partId:string, name: string, type: string, typeId: string, color: string, colorId: number, category: string, remark: string){
         this.id = id;
+        this.partId = partId;
         this.name = name;
         this.type = type;
         this.typeId = typeId;
@@ -30,9 +32,9 @@ export default class Item {
             tmpColorId = 1;
         }
         if (this.typeId === "P") {
-            return `https://img.bricklink.com/ItemImage/PT/${tmpColorId}/${this.id}.t1.png`;
+            return `https://img.bricklink.com/ItemImage/PT/${tmpColorId}/${this.partId}.t1.png`;
         } else {
-            return `https://img.bricklink.com/${this.typeId}/${this.id}.jpg`
+            return `https://img.bricklink.com/${this.typeId}/${this.partId}.jpg`
         }
     };
 }

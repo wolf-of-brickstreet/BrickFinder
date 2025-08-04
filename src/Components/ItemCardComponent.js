@@ -21,6 +21,7 @@ export default function ItemCardComponent(props){
             </div>
             <span className="nameField">{props.item.name}</span>
             <span> {props.item.color}</span>
+            <span> {props.item.remark}</span>
             <img src={props.item.image} alt={props.item.name + " in " + props.item.color} />
         </div>
     );

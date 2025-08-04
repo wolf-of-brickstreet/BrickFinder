@@ -38,7 +38,7 @@ export default function MainComponent(){
             console.log('Suche mit:', debouncedValue);
             var tmpItems = [];
             for (const storage of itemsByStorage) {
-                var test = storage.filter(part => part.name.toLowerCase().includes(debouncedValue.toLowerCase()) || part.id.toLowerCase().includes(debouncedValue.toLowerCase()));
+                var test = storage.filter(part => part.name.toLowerCase().includes(debouncedValue.toLowerCase()) || part.partId.toLowerCase().includes(debouncedValue.toLowerCase()));
             tmpItems.push(test);
             }
             setFilteredItemsByStorage([...tmpItems]);
@@ -92,6 +92,7 @@ export default function MainComponent(){
             var tmpItems = [];
             for (const entry of jsonObj.Inventory.Item) {
                 var item = new Item(
+                    entry["@attributes"].id,
                     entry.ItemID["#text"],
                     entry.ItemName["#text"],
                     entry.ItemTypeName["#text"],
@@ -155,7 +156,7 @@ export default function MainComponent(){
                         <div className="heading">{ storage[0]?.remark.split('.')[0] }</div>
                         <div className='cards'>
                             { storage?.map((item) => (
-                                <ItemCardComponent key={item.id + item.color} item={item} />
+                                <ItemCardComponent key={item.id} item={item} />
                             ))}
                         </div>
                     </div>
