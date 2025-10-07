@@ -1,0 +1,36 @@
+.brickContainer {
+    display: flex;
+    border: 1px solid lightgray;
+    gap: 10px;
+    margin: 4px;
+    border-radius: 4px;
+    background-color: lightgray;
+}
+
+.brickImage {
+    height: 60px;
+}
+
+.brickInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-evenly;
+    padding-right: 10px;
+}
+
+.brickInfoField {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.brickNameField {
+    text-align: start;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;     /* Anzahl der sichtbaren Zeilen */
+    line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

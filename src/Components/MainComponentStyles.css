@@ -1,0 +1,51 @@
+.cards {
+    padding: 20px;
+    grid-column: 2 / span 12;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    grid-gap: 20px;
+  }
+
+.header {
+  background-color: darkslategray;
+  color: red;
+  font-size: 40px;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+}
+
+.heading {
+  height: 100%;
+  font-weight: bolder;
+}
+
+.searchInput {
+  width: 80%;
+  border-radius: 5px;
+  border: none;
+  height: 30px;
+  padding-left: 10px;
+}
+
+.mainContainer {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.filterDiv {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: sticky;
+  top: 60px;
+  background-color: #d3d3d3;
+}

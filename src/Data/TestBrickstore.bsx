@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><BrickStoreXML>
+ <Inventory Currency="EUR" BrickLinkChangelogId="431540">
+  <Item id="aadf41ef-2abf-47a2-bc74-ecd4f365416e">
+   <ItemID>sw1366</ItemID>
+   <ItemTypeID>M</ItemTypeID>
+   <ColorID>0</ColorID>
+   <ItemName>Darth Dev (Darth Devastator)</ItemName>
+   <ItemTypeName>Minifigure</ItemTypeName>
+   <ColorName>(Not Applicable)</ColorName>
+   <CategoryID>65</CategoryID>
+   <CategoryName>Star Wars</CategoryName>
+   <Status>I</Status>
+   <Qty>1</Qty>
+   <Price>0.000</Price>
+   <Condition>N</Condition>
+   <Remarks>L1.1</Remarks>
+   <DateAdded>2025-03-24T06:55:24Z</DateAdded>
+   <DifferenceBaseValues Remarks=""/>
+  </Item>
+  <Item id="bbdf41ef-2abf-47a2-bc74-ecd4f365416e">
+   <ItemID>3839b</ItemID>
+   <ItemTypeID>P</ItemTypeID>
+   <ColorID>34</ColorID>
+   <ItemName>Plate, Modified 1 x 2 with Bar Handles - Flat Ends, Low Attachment</ItemName>
+   <ItemTypeName>Part</ItemTypeName>
+   <ColorName>Lime</ColorName>
+   <CategoryID>27</CategoryID>
+   <CategoryName>Plate, Modified</CategoryName>
+   <Status>I</Status>
+   <Qty>1</Qty>
+   <Price>0.000</Price>
+   <Condition>N</Condition>
+   <Remarks>K2.3</Remarks>
+   <DateAdded>2025-04-07T13:39:27Z</DateAdded>
+   <DifferenceBaseValues Remarks=""/>
+  </Item>
+ <Item id="77699764-f8da-4bea-b9f8-c43644e9cb41"><ItemID>66857</ItemID><ItemName>Tile, Round 2 x 4 Oval</ItemName><ItemTypeName>part</ItemTypeName><ItemTypeID>P</ItemTypeID><ColorName>Medium Nougat</ColorName><ColorID>150</ColorID><CategoryName>Tile, Round</CategoryName><CategoryID>0</CategoryID><Status>I</Status><Qty>0</Qty><Price>0</Price><Condition>N</Condition><Remarks>KT18.1</Remarks><DateAdded>2025-08-04T19:00:32.915Z</DateAdded></Item><Item id="eab61eb9-836b-48f7-9228-eae6112ff238"><ItemID>66857</ItemID><ItemName>Tile, Round 2 x 4 Oval</ItemName><ItemTypeName>part</ItemTypeName><ItemTypeID>P</ItemTypeID><ColorName>White</ColorName><ColorID>1</ColorID><CategoryName>Tile, Round</CategoryName><CategoryID>0</CategoryID><Status>I</Status><Qty>0</Qty><Price>0</Price><Condition>N</Condition><Remarks>KT18.1</Remarks><DateAdded>2025-08-04T19:01:14.647Z</DateAdded></Item><Item id="bb8df585-a872-4968-9fd3-e44689630a5b"><ItemID>67095</ItemID><ItemName>Tile, Round 3 x 3</ItemName><ItemTypeName>part</ItemTypeName><ItemTypeID>P</ItemTypeID><ColorName>Dark Bluish Gray</ColorName><ColorID>85</ColorID><CategoryName>Tile, Round</CategoryName><CategoryID>0</CategoryID><Status>I</Status><Qty>0</Qty><Price>0</Price><Condition>N</Condition><Remarks>KT18.2</Remarks><DateAdded>2025-08-04T19:07:16.897Z</DateAdded></Item><Item id="86f5e12d-eebd-47b0-aee5-eec4014748ee"><ItemID>67095</ItemID><ItemName>Tile, Round 3 x 3</ItemName><ItemTypeName>part</ItemTypeName><ItemTypeID>P</ItemTypeID><ColorName>Light Bluish Gray</ColorName><ColorID>86</ColorID><CategoryName>Tile, Round</CategoryName><CategoryID>0</CategoryID><Status>I</Status><Qty>0</Qty><Price>0</Price><Condition>N</Condition><Remarks>KT18.2</Remarks><DateAdded>2025-08-04T19:07:24.332Z</DateAdded></Item><Item id="9f469d44-6a6f-47fe-9930-91643c07ccfb"><ItemID>67095</ItemID><ItemName>Tile, Round 3 x 3</ItemName><ItemTypeName>part</ItemTypeName><ItemTypeID>P</ItemTypeID><ColorName>White</ColorName><ColorID>1</ColorID><CategoryName>Tile, Round</CategoryName><CategoryID>0</CategoryID><Status>I</Status><Qty>0</Qty><Price>0</Price><Condition>N</Condition><Remarks>KT18.2</Remarks><DateAdded>2025-08-04T19:07:30.473Z</DateAdded></Item><Item id="1f569a14-e960-47c8-89c0-da253ff12ede"><ItemID>67095</ItemID><ItemName>Tile, Round 3 x 3</ItemName><ItemTypeName>part</ItemTypeName><ItemTypeID>P</ItemTypeID><ColorName>Black</ColorName><ColorID>11</ColorID><CategoryName>Tile, Round</CategoryName><CategoryID>0</CategoryID><Status>I</Status><Qty>0</Qty><Price>0</Price><Condition>N</Condition><Remarks>KT18.3</Remarks><DateAdded>2025-08-04T19:08:45.809Z</DateAdded></Item><Item id="b1cb0a88-f773-4434-9b5d-47fd06b9c354"><ItemID>67095</ItemID><ItemName>Tile, Round 3 x 3</ItemName><ItemTypeName>part</ItemTypeName><ItemTypeID>P</ItemTypeID><ColorName>Dark Tan</ColorName><ColorID>69</ColorID><CategoryName>Tile, Round</CategoryName><CategoryID>0</CategoryID><Status>I</Status><Qty>0</Qty><Price>0</Price><Condition>N</Condition><Remarks>KT18.3</Remarks><DateAdded>2025-08-04T19:09:03.648Z</DateAdded></Item><Item id="65faa06b-7417-41c2-b58d-810ab2334d86"><ItemID>3396</ItemID><ItemName>Tile, Modified 2 x 2 with 2 1 x 1 Curved Cutouts (Double Arrow)</ItemName><ItemTypeName>part</ItemTypeName><ItemTypeID>P</ItemTypeID><ColorName>Light Bluish Gray</ColorName><ColorID>86</ColorID><CategoryName>Tile, Modified</CategoryName><CategoryID>0</CategoryID><Status>I</Status><Qty>0</Qty><Price>0</Price><Condition>N</Condition><Remarks>KT18.4</Remarks><DateAdded>2025-08-04T19:10:16.062Z</DateAdded></Item><Item id="a0b29d24-d4fa-4f20-9451-d3ec84aef118"><ItemID>3396</ItemID><ItemName>Tile, Modified 2 x 2 with 2 1 x 1 Curved Cutouts (Double Arrow)</ItemName><ItemTypeName>part</ItemTypeName><ItemTypeID>P</ItemTypeID><ColorName>Dark Tan</ColorName><ColorID>69</ColorID><CategoryName>Tile, Modified</CategoryName><CategoryID>0</CategoryID><Status>I</Status><Qty>0</Qty><Price>0</Price><Condition>N</Condition><Remarks>KT18.5</Remarks><DateAdded>2025-08-04T19:10:53.681Z</DateAdded></Item><Item id="e4df41ef-2abf-47a2-bc74-ecd4f365416e"><ItemID>1126</ItemID><ItemName>Tile, Round 1 x 2 Oval</ItemName><ItemTypeName>part</ItemTypeName><ItemTypeID>P</ItemTypeID><ColorName>Light Bluish Gray</ColorName><ColorID>86</ColorID><CategoryName>Tile, Round</CategoryName><CategoryID>0</CategoryID><Status>I</Status><Qty>0</Qty><Price>0</Price><Condition>N</Condition><Remarks>KT18.6</Remarks><DateAdded>2025-08-04T19:12:02.830Z</DateAdded></Item><Item id="9d58956a-609e-4123-ad66-f97442579318"><ItemID>1126</ItemID><ItemName>Tile, Round 1 x 2 Oval</ItemName><ItemTypeName>part</ItemTypeName><ItemTypeID>P</ItemTypeID><ColorName>Black</ColorName><ColorID>11</ColorID><CategoryName>Tile, Round</CategoryName><CategoryID>0</CategoryID><Status>I</Status><Qty>0</Qty><Price>0</Price><Condition>N</Condition><Remarks>KT18.6</Remarks><DateAdded>2025-08-04T19:12:09.167Z</DateAdded></Item><Item id="d9d02411-b236-48cb-a356-1885febd8eee"><ItemID>1126</ItemID><ItemName>Tile, Round 1 x 2 Oval</ItemName><ItemTypeName>part</ItemTypeName><ItemTypeID>P</ItemTypeID><ColorName>White</ColorName><ColorID>1</ColorID><CategoryName>Tile, Round</CategoryName><CategoryID>0</CategoryID><Status>I</Status><Qty>0</Qty><Price>0</Price><Condition>N</Condition><Remarks>KT18.6</Remarks><DateAdded>2025-08-04T19:13:51.438Z</DateAdded></Item></Inventory>
+ <GuiState Application="BrickStore" Version="2">
+  <ColumnLayout Compressed="1"><![CDATA[AAABZnicNc9LD8FgEIXhGUqp+526K2JhYyextbKyZOsX+olmYt4mJ31yZr4v7e30vohI2XKU/5PHW84WdbxiQ+6WxPG1VCQOVR0fS0pT00AdZD66WhoaaIIWozbocE8X9BgNwcjxtIzBhOUpOzOanGZOs6BZghVYgw3YgoLje5qB42EpaaDPf+00vvcgP8L4DE0=]]></ColumnLayout>
+  <SortFilterState Compressed="1"><![CDATA[AAAAinicLcnXDYAwAANR00OH0Os4LBD2n4VDcNKTPywpdJe7xert1JcHH8H/RIiRwCBFhhwFSlSo0aCFRYceA0ZMmLFgxYYdxwP5iwMa]]></SortFilterState>
+ </GuiState>
+</BrickStoreXML>

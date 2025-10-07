@@ -1,0 +1,36 @@
+.detailsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.closeButtonContainer {
+    display: flex;
+    justify-content: end;
+    padding-top: 5px;
+    padding-right: 10px;
+    width: 100%;
+}
+
+.closeButton {
+    height: 25px;
+}
+
+.brickDetailsImage {
+    width: 100%;
+}
+
+.detailsRow {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;;
+}
+
+input {
+    border-radius: 5px;
+    border: none;
+    height: 30px;
+    padding-left: 10px;
+    background: #e9e9e9;
+}

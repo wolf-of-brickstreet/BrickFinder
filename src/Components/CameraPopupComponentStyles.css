@@ -1,0 +1,71 @@
+.buttonContainer {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    color: white;
+}
+
+.imageButton {
+    height: 40px;
+}
+
+.cameraContainer {
+    height: 100%;
+}
+
+.cameraVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+}
+
+.cameraControls {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: black;
+  bottom: 0px;
+  display: flex;
+  border-radius: 0 0 10px 10px;
+  opacity: 50%;
+}
+
+.outer-ring {
+  width: 54px;
+  height: 54px;
+  border: 4px solid red;    /* roter Ring */
+  border-radius: 50%;        /* macht es rund */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;             /* Abstand zum inneren Kreis */
+}
+
+.inner-circle {
+  width: 50px;
+  height: 50px;
+  background-color: red;     /* roter Kreis */
+  border-radius: 50%;
+}
+
+.resultContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.backButtonContainer {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.backButton {
+    height: 25px;
+}
