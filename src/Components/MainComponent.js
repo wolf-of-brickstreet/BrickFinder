@@ -82,9 +82,7 @@ export default function MainComponent(){
         
     function readXML() {
         var xml;
-        axios.get(XMLData, {
-            "Content-Type": "application/xml; charset=utf-8"
-        })
+        fetch('https://raspberrypi.local/inventory')
         .then((response) => {
             var parser = new DOMParser();
             xml = parser.parseFromString(response.data, "text/xml");
