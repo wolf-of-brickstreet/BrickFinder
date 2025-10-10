@@ -5,7 +5,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 export default function ItemCardComponent(props){
     async function deleteItem() {
-        await fetch('http://localhost:3001/delete-item', {
+        await fetch('http://raspberrypi.local:3001/delete-item', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
