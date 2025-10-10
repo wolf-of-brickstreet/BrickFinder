@@ -16,7 +16,7 @@ export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByS
     const [selectedColor, setSelectedColor] = useState({id: -1, name: "(Not Applicable)"});
 
     useEffect(() => {
-      fetch('https://raspberrypi.local:3001/colors')
+      fetch('https://raspberrypi.local/colors')
         .then(res => res.json())
         .then(colors => {
           console.log(colors);
@@ -105,7 +105,7 @@ export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByS
 
     async function saveXmlToServer(xmlString) {
       try {
-        const response = await axios.post('https://raspberrypi.local:3001/save-xml', xmlString, {
+        const response = await axios.post('https://raspberrypi.local/save-xml', xmlString, {
           headers: { 'Content-Type': 'application/xml' }
         });
         console.log(response.data);
