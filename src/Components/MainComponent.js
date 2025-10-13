@@ -86,7 +86,7 @@ export default function MainComponent(){
         .then((response) => {
             var parser = new DOMParser();
             console.log(response);
-            xml = parser.parseFromString(response, "text/xml");
+            xml = parser.parseFromString(response.data, "text/xml");
             var jsonObj = xmlToJson(xml.documentElement);
             var tmpItems = [];
             for (const entry of jsonObj.Inventory.Item) {
