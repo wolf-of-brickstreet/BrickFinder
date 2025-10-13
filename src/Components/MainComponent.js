@@ -142,7 +142,7 @@ export default function MainComponent(){
     return (
         <div className="mainContainer">
             <div className="header">
-                <span className="heading">BRICKSTORAGE</span>
+                <span className="heading">BRICKFINDER</span>
             </div>
             <div className="filterDiv">
                 <input className="searchInput" placeholder='Search...' value={inputValue} onChange={(e) => setInputValue(e.target.value)}/>

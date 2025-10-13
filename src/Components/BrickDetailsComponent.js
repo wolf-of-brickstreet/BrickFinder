@@ -134,13 +134,12 @@ export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByS
                   <div className="detailsRow"><strong>Id:</strong><div>{brick.partId}</div></div>
                   <div className="detailsRow"><strong>Type:</strong><div>{brick.type}</div></div>
                   { itemsByStorage.map((storage) => findItemInStorage(storage))}
-                  <button onClick={()=> saveAsNewBrick()}>save</button>
                 </div>
                 <div className="detailsContainer" id='inputs'>
                   <div className="detailsRow"><strong>Qty:</strong><input id='qtyInput' /></div>
                   <div className="detailsRow"><strong>Storage:</strong><input type='text' id='remarksInput' value={remarkValue} onChange={(e) => setRemarkValue(e.target.value)} /></div>
                   <div className="detailsRow"><strong>Storage:</strong>
-                    <select id="colorSelect" onChange={handleColorChange}>
+                    <select className='colorSelect' id="colorSelect" onChange={handleColorChange}>
                       {bricklinkColors.map(color => (
                         <option key={color.id} value={color.id}>
                           {color.name}
@@ -148,6 +147,7 @@ export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByS
                       ))}
                     </select>
                   </div>
+                  <button className='saveBtn' onClick={()=> saveAsNewBrick()}>save</button>
                 </div>
             </div>
         </div>

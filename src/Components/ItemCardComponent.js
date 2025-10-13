@@ -11,7 +11,7 @@ export default function ItemCardComponent(props){
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ id: props.item.id })
-        });
+        }).then(() => location.reload());
     }
 
     return (
