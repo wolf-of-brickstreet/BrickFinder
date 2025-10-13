@@ -85,7 +85,7 @@ export default function MainComponent(){
         fetch('https://raspberrypi.local/getInventory')
         .then((response) => {
             var parser = new DOMParser();
-            console.log(response):
+            console.log(response);
             xml = parser.parseFromString(response, "text/xml");
             var jsonObj = xmlToJson(xml.documentElement);
             var tmpItems = [];
