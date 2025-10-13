@@ -43,12 +43,11 @@ export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByS
 
     function saveAsNewBrick() {
         var xml;
-        axios.get(XMLData, {
-            "Content-Type": "application/xml; charset=utf-8"
-        })
-        .then((response) => {
+        fetch('https://raspberrypi.local/getInventory')
+          .then((response) => response.text())
+          .then((xmlString) => {
             var parser = new DOMParser();
-            xml = parser.parseFromString(response.data, "text/xml");
+            xml = parser.parseFromString(xmlString, "text/xml");
             const inventory = xml.getElementsByTagName('Inventory')[0];
 
             if (!inventory) {
@@ -101,7 +100,7 @@ export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByS
             const updatedXmlString = new XMLSerializer().serializeToString(xml);
 
             saveXmlToServer(updatedXmlString);
-        });
+          });
     };
 
     async function saveXmlToServer(xmlString) {
