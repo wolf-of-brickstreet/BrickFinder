@@ -14,6 +14,7 @@ export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByS
     const [bricklinkColors, setBricklinkColors] = useState([]);
     const [remarkValue, setRemarkValue] = useState('');
     const [selectedColor, setSelectedColor] = useState({id: -1, name: "(Not Applicable)"});
+    const [isSaving, setIsSaving] = useState(false);
 
     useEffect(() => {
       fetch('https://raspberrypi.local/colors')
@@ -104,6 +105,7 @@ export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByS
     };
 
     async function saveXmlToServer(xmlString) {
+      setIsSaving(true);
       try {
         const response = await axios.post('https://raspberrypi.local/save-xml', xmlString, {
           headers: { 'Content-Type': 'application/xml' }
@@ -111,6 +113,8 @@ export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByS
         console.log(response.data);
       } catch (error) {
         console.error('Fehler beim Speichern:', error);
+      } finally {
+        setIsSaving(false);
       }
     };
 
@@ -147,7 +151,8 @@ export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByS
                       ))}
                     </select>
                   </div>
-                  <button className='saveBtn' onClick={()=> saveAsNewBrick()}>SAVE</button>
+                  {isSaving && <p className='loadingToast'>Saving...</p>}
+                  { !isSaving && <button className='saveBtn' onClick={()=> saveAsNewBrick()}>SAVE</button>}
                 </div>
             </div>
         </div>
