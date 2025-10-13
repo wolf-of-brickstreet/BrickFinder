@@ -26,7 +26,9 @@ function CameraPopupComponent({ isOpen, onClose, itemsByStorage }) {
         const videoDevices = allDevices.filter(device => device.kind === 'videoinput');
         setDevices(videoDevices);
         // Falls noch keine Kamera aktiv, erste Kamera setzen
-        if (!activeDeviceId && videoDevices.length > 0) {
+        if (!activeDeviceId && videoDevices.length > 1) {
+          setActiveDeviceId(videoDevices[1].deviceId); // Damit auf dem IPhone nicht die Selfie Cam der default ist
+        } else if (!activeDeviceId && videoDevices.length > 0) {
           setActiveDeviceId(videoDevices[0].deviceId);
         }
       } catch (err) {
