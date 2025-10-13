@@ -139,8 +139,8 @@ function CameraPopupComponent({ isOpen, onClose, itemsByStorage }) {
 
   return (
     <div style={styles.overlay}>
-      {loading && <p className='loadingToast'>Lade...</p>}
       <div style={styles.popup}>
+        {loading && <p className='loadingToast'>Lade...</p>}
         <div className='cameraContainer' style={{ display: result ? 'none' : 'block' }}>
           <video ref={videoRef} autoPlay playsInline muted className="cameraVideo" />
           <canvas ref={canvasRef} style={{ display: 'none' }} />
