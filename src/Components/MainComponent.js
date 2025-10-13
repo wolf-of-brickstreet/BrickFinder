@@ -82,7 +82,7 @@ export default function MainComponent(){
         
     function readXML() {
         var xml;
-        fetch('https://raspberrypi.local/inventory')
+        fetch('https://raspberrypi.local/getInventory')
         .then((response) => {
             var parser = new DOMParser();
             xml = parser.parseFromString(response.data, "text/xml");
