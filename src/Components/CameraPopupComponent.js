@@ -154,7 +154,7 @@ function CameraPopupComponent({ isOpen, onClose, itemsByStorage }) {
           </div>
         </div>
         <div className="resultContainer">
-          {loading && <p>Lade...</p>}
+          {loading && <p className='loadingToast'>Lade...</p>}
           {result && (
             <div>{ renderResults() }</div>
           )}

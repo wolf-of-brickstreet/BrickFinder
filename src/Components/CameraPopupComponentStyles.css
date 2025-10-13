@@ -69,3 +69,13 @@
 .backButton {
     height: 25px;
 }
+
+.loadingToast {
+  background-color: black;
+  opacity: 0.33;
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-weight: bold;
+  font-size: large;
+}

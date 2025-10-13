@@ -131,7 +131,7 @@ export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByS
                 <div className="detailsContainer" id='details'>
                   <img src={brick.img_url} className="brickDetailsImage"/>
                   <div className="detailsRow"><strong>Name:</strong><div>{brick.name}</div></div>
-                  <div className="detailsRow"><strong>Id:</strong><div>{brick.partId}</div></div>
+                  <div className="detailsRow"><strong>Id:</strong><div>{brick.id}</div></div>
                   <div className="detailsRow"><strong>Type:</strong><div>{brick.type}</div></div>
                   { itemsByStorage.map((storage) => findItemInStorage(storage))}
                 </div>
@@ -147,7 +147,7 @@ export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByS
                       ))}
                     </select>
                   </div>
-                  <button className='saveBtn' onClick={()=> saveAsNewBrick()}>save</button>
+                  <button className='saveBtn' onClick={()=> saveAsNewBrick()}>SAVE</button>
                 </div>
             </div>
         </div>
