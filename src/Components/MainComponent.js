@@ -83,10 +83,11 @@ export default function MainComponent(){
     function readXML() {
         var xml;
         fetch('https://raspberrypi.local/getInventory')
-        .then((response) => {
+        .then((response) => response.text())
+        .then((xmlString) => {
             var parser = new DOMParser();
-            console.log("Inventory: " + response.data);
-            xml = parser.parseFromString(response.data, "text/xml");
+            console.log("Inventory: " + xmlString.data);
+            xml = parser.parseFromString(xmlString.data, "text/xml");
             var jsonObj = xmlToJson(xml.documentElement);
             var tmpItems = [];
             for (const entry of jsonObj.Inventory.Item) {
