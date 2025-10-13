@@ -81,34 +81,38 @@ export default function MainComponent(){
     }
         
     function readXML() {
-        var xml;
         fetch('https://raspberrypi.local/getInventory')
-        .then((response) => response.text())
-        .then((xmlString) => {
-            var parser = new DOMParser();
-            console.log("Inventory: " + xmlString.data);
-            xml = parser.parseFromString(xmlString.data, "text/xml");
-            var jsonObj = xmlToJson(xml.documentElement);
-            var tmpItems = [];
-            for (const entry of jsonObj.Inventory.Item) {
-                var item = new Item(
-                    entry["@attributes"].id,
-                    entry.ItemID["#text"],
-                    entry.ItemName["#text"],
-                    entry.ItemTypeName["#text"],
-                    entry.ItemTypeID["#text"],
-                    entry.ColorName["#text"],
-                    Number(entry.ColorID["#text"]),
-                    entry.CategoryName["#text"],
-                    entry.Remarks["#text"]
-                );
-                tmpItems.push(item);
-                
-            }
-            sortItemsByStorage(tmpItems);
-            setItems(tmpItems);
-        });
-    };
+            .then((response) => response.text()) // Wichtig: response als Text lesen
+            .then((xmlString) => {
+                var parser = new DOMParser();
+                var xml = parser.parseFromString(xmlString, "text/xml");
+
+                var jsonObj = xmlToJson(xml.documentElement); // deine bestehende Funktion
+
+                var tmpItems = [];
+                for (const entry of jsonObj.Inventory.Item) {
+                    var item = new Item(
+                        entry["@attributes"].id,
+                        entry.ItemID["#text"],
+                        entry.ItemName["#text"],
+                        entry.ItemTypeName["#text"],
+                        entry.ItemTypeID["#text"],
+                        entry.ColorName["#text"],
+                        Number(entry.ColorID["#text"]),
+                        entry.CategoryName["#text"],
+                        entry.Remarks["#text"]
+                    );
+                    tmpItems.push(item);
+                }
+
+                sortItemsByStorage(tmpItems);
+                setItems(tmpItems);
+            })
+            .catch((err) => {
+                console.error("Fehler beim Laden des Inventars:", err);
+            });
+    }
+
 
     function sortItemsByStorage(items) {
         var tmpItemsByStorage = [...itemsByStorage];
