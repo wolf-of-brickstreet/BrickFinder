@@ -32,10 +32,10 @@ export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByS
       if (storage.length > 0) {
         console.log("Storage > 0");
         const hits = storage.filter(item => {
-          console.log("Item: " + item.id + " Brick: " + brick.id);
+          console.log("Item: " + item.partId + " Brick: " + brick.id);
           console.log(item);
           console.log(brick);
-          return item.id === brick.id
+          return item.partId === brick.id
         });
         if (hits.length > 0) {
           return (
@@ -71,7 +71,7 @@ export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByS
             };
 
             const typeId = brick.type === "part" ? "P" : "M";
-            item.appendChild(createElementWithText('ItemID', brick.partId));
+            item.appendChild(createElementWithText('ItemID', brick.id));
             item.appendChild(createElementWithText('ItemName', brick.name));
             item.appendChild(createElementWithText('ItemTypeName', brick.type));
             item.appendChild(createElementWithText('ItemTypeID', typeId));
