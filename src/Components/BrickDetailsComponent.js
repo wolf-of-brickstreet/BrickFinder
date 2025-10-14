@@ -149,6 +149,9 @@ export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByS
                   <div className="detailsRow"><strong>Storage:</strong><input type='text' id='remarksInput' value={remarkValue} onChange={(e) => setRemarkValue(e.target.value)} /></div>
                   <div className="detailsRow"><strong>Color:</strong>
                     <select className='colorSelect' id="colorSelect" onChange={handleColorChange}>
+                      <option key={-1} value ={-1}>
+                        (Not Applicable)
+                      </option>
                       {bricklinkColors.map(color => (
                         <option key={color.id} value={color.id}>
                           {color.name}

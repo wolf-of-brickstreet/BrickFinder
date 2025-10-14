@@ -27,9 +27,8 @@ export default class Item {
         var fileExt = "jpg";
         var tmpColorId = this.colorId;
 
-        if (this.colorId === 0) {
-            fileExt = "gif";
-            tmpColorId = 1;
+        if (this.colorId === -1) {
+            tmpColorId = 5;
         }
         if (this.typeId === "P") {
             return `https://img.bricklink.com/ItemImage/PT/${tmpColorId}/${this.partId}.t1.png`;
