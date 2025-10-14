@@ -30,7 +30,13 @@ export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByS
 
     function findItemInStorage(storage) {
       if (storage.length > 0) {
-        const hits = storage.filter(item => item.id === brick.id);
+        console.log("Storage > 0");
+        const hits = storage.filter(item => {
+          console.log("Item: " + item.id + " Brick: " + brick.id);
+          console.log(item);
+          console.log(brick);
+          item.id === brick.id
+        });
         if (hits.length > 0) {
           return (
             <div key={storage[0].remark.split(".")[0]}>
