@@ -35,7 +35,7 @@ export default function BrickDetailsComponent({ isOpen, onClose, brick, itemsByS
           console.log("Item: " + item.id + " Brick: " + brick.id);
           console.log(item);
           console.log(brick);
-          item.id === brick.id
+          return item.id === brick.id
         });
         if (hits.length > 0) {
           return (
