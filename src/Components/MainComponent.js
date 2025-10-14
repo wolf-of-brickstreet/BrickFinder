@@ -135,6 +135,11 @@ export default function MainComponent(){
                 tmpItemsByStorage.push([item]);
             }
         }
+        tmpItemsByStorage.sort((a, b) => {
+            const remarkA = a[0]?.remark?.toLowerCase() || "";
+            const remarkB = b[0]?.remark?.toLowerCase() || "";
+            return remarkA.localeCompare(remarkB);
+        });
         setItemsByStorage([...tmpItemsByStorage]);
         setFilteredItemsByStorage([...tmpItemsByStorage]);
     }
