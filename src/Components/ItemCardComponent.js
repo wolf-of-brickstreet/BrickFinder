@@ -17,7 +17,7 @@ export default function ItemCardComponent(props){
     return (
         <div className="card">
             <div className="closeButtonContainer">
-                <FontAwesomeIcon icon={faXmark} onClick={() =>{deleteItem()} } className="closeButton"/>
+                <FontAwesomeIcon icon={faXmark} onClick={() =>{if (window.confirm("Do you really want to delete " + props.item.name + "?")) {deleteItem()}} } className="closeButton"/>
             </div>
             <span className="nameField">{props.item.name}</span>
             <span> {props.item.color}</span>
